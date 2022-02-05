@@ -84,8 +84,38 @@ function playRound(playerSelection, computerSelection) {
                 }
                 break;
             default:
-                console.log("Be careful with typing")
+                console.log("Be careful with typing");
+                return "ComputerWin";
     
         }
     }
 }    
+
+function game(rounds=5) {
+if (rounds > 0) {
+    let i = 0;
+    playerScore = 0;
+    computerScore = 0;
+    
+    while (i < rounds){
+        switch (playRound(playerPlay(),computerPlay())) {
+            case "Draw":
+                break;
+            case "ComputerWin":
+                computerScore++;
+                i++;
+                console.log(`Round ${i} score: ${playerScore}-${computerScore}`);
+                break;
+            case "PlayerWin":
+                playerScore++;
+                i++;
+                console.log(`Round ${i} score: ${playerScore}-${computerScore}`);
+                break;
+        }
+    }
+    return (playerScore === computerScore) ? "Draw!" :
+           (playerScore > computerScore) ? "You win!" :
+           "You Lose!";
+
+} else console.log("Parameter should be positive integer number!")
+}
