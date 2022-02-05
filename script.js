@@ -92,30 +92,30 @@ function playRound(playerSelection, computerSelection) {
 }    
 
 function game(rounds=5) {
-if (rounds > 0) {
-    let i = 0;
-    playerScore = 0;
-    computerScore = 0;
-    
-    while (i < rounds){
-        switch (playRound(playerPlay(),computerPlay())) {
-            case "Draw":
-                break;
-            case "ComputerWin":
-                computerScore++;
-                i++;
-                console.log(`Round ${i} score: ${playerScore}-${computerScore}`);
-                break;
-            case "PlayerWin":
-                playerScore++;
-                i++;
-                console.log(`Round ${i} score: ${playerScore}-${computerScore}`);
-                break;
+    if (rounds > 0) {
+        let i = 0;
+        playerScore = 0;
+        computerScore = 0;
+        
+        while (i < rounds){
+            switch (playRound(playerPlay(),computerPlay())) {
+                case "Draw":
+                    break;
+                case "ComputerWin":
+                    computerScore++;
+                    i++;
+                    console.log(`Round ${i} score: ${playerScore}-${computerScore}`);
+                    break;
+                case "PlayerWin":
+                    playerScore++;
+                    i++;
+                    console.log(`Round ${i} score: ${playerScore}-${computerScore}`);
+                    break;
+            }
         }
-    }
-    return (playerScore === computerScore) ? "Draw!" :
-           (playerScore > computerScore) ? "You win!" :
-           "You Lose!";
-
-} else console.log("Parameter should be positive integer number!")
+        return (playerScore === computerScore) ? "Final result is Draw!" :
+               (playerScore > computerScore) ? "You win the Game!" :
+               "You lose the Game!";
+    
+    } else console.log("Parameter should be positive integer number!");
 }
