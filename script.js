@@ -18,17 +18,60 @@ quotesArr[15]= "– Dennis Rodman";
 quotesArr[16]= "Worrying gets you nowhere. if you turn up worrying about how you’re going to perform, you’ve already lost. Train hard, turn up, run your best and the rest will take care of itself.";
 quotesArr[17]= "– Usain Bolt";
 
+console.log(`Let start the game`);
+
+const DARK_BLUE = "#1f2937";
+const BLUE = "#3882f6"
+
 let playerScore = 0;
 let computerScore = 0;
 let playerCh = "";
 let gameInProgress = false;
 
-console.log(`Let start the game`);
+const roundNumberCaption = document.querySelector('#round-number-text');
+const yourScoreCaption = document.querySelector('#your-score');
+const compScoreCaption = document.querySelector('#comp-score');
+const quoteTextCaption = document.querySelector('.quote-text');
+const quoteAuthCaption = document.querySelector('.quote-auth');
+
+let quotNum = Math.floor(Math.random()*9);
+quoteTextCaption.textContent = quotesArr[quotNum];
+quoteAuthCaption.textContent = quotesArr[quotNum+1];
+
+const startBtn = document.querySelector('#startButton');
+
+startBtn.addEventListener('click', () => {
+    gameInProgress = true;
+    roundResultCapture.textContent = "Choose responsibly";
+    roundResultCapture.style.color = "black";
+    startBtn.style.background = BLUE;
+    warmBtm.style.background = "";
+    game(5);        
+})
+
+const warmBtm = document.querySelector('#warmupButton');
+warmBtm.style.background = BLUE;
+warmBtm.addEventListener('click', () => {
+    gameInProgress = false;
+    roundNumberCaption.textContent = "Warmup";
+    roundResultCapture.textContent = "Train hard! No pain, no gain!"
+    yourScoreCaption.textContent = "0";
+    compScoreCaption.textContent = "0";
+    startBtn.style.background = "";
+    warmBtm.style.background = BLUE;
+
+
+})
+
+async function btnClick(...img) {
+    return new Promise(resolve =>  {for  (let i of img) i.onclick = () => resolve()});
+}
 
 const roundResultCapture = document.querySelector('#round-result');
 const compChoiceImg = document.querySelector('.compChoiceImg');
 const playerChoiceImgs = document.querySelectorAll('.playerChoiceImg');
 for (let playerChoiceImg of playerChoiceImgs) {
+    
     playerChoiceImg.addEventListener('click', () => {
         playerChoiceImg.style.filter = "grayscale(0)";
         console.log(`You choose ${playerChoiceImg.id}`);
@@ -37,6 +80,7 @@ for (let playerChoiceImg of playerChoiceImgs) {
             playRound(playerChoiceImg.id, computerPlay());
             
         } else {
+            
             playerCh = playerChoiceImg.id;
         }
         setTimeout(() => playerChoiceImg.style.filter = "", 1000);
@@ -158,29 +202,44 @@ function playRound(playerSelection, computerSelection) {
 async function game(rounds = 5) {
     if (rounds > 0) {
         let i = 0;
+        gameInProgress = true;
         playerScore = 0;
         computerScore = 0;
+        yourScoreCaption.textContent = playerScore;
+        compScoreCaption.textContent = computerScore;
         
         while (i < rounds) {
+            roundNumberCaption.textContent = `Round ${i+1}`;            
+            await btnClick(...playerChoiceImgs);
+            if (!gameInProgress) return;
+            quotNum = Math.floor(Math.random()*9);
+            quoteTextCaption.textContent = quotesArr[quotNum];
+            quoteAuthCaption.textContent = quotesArr[quotNum+1];
 
-            switch (playRound(playerPlay(), computerPlay())) {
+            switch (playRound(playerCh, computerPlay())) {
                 case "Draw":
                     break;
                 case "ComputerWin":
                     computerScore++;
                     i++;
                     console.log(`Round ${i} score: ${playerScore}-${computerScore}`);
+                    compScoreCaption.textContent = computerScore;
                     break;
                 case "PlayerWin":
                     playerScore++;
                     i++;
                     console.log(`Round ${i} score: ${playerScore}-${computerScore}`);
+                    yourScoreCaption.textContent = playerScore;
                     break;
             }
         }
-        return (playerScore === computerScore) ? "Final result is Draw!" :
+        
+        let result = (playerScore === computerScore) ? "Final result is Draw!" :
             (playerScore > computerScore) ? "You've won The Game!" :
                 "You've lost The Game!";
+        console.log(result);
+        roundResultCapture.textContent = result;
+        roundResultCapture.style.color = "black";
 
     } else console.log("Parameter should be positive integer number!");
 }

@@ -105,6 +105,7 @@ img {
     display: flex;
     justify-content: center;
     align-items: center;
+    gap: 30px;
     margin-top: 20px;
     margin-bottom: 20px;
 }
@@ -119,12 +120,21 @@ img {
 
 
 button {
-    margin-left: 30px;
-    background: #3882f6;
+    background: #1f2937;
+    width: 110px;
     color: #f9faf8;
     border-radius: 4px;
     border: 1px solid #3882f6;
     padding: 6px 18px;
+}
+
+
+#startButton:hover {
+    background: #3882f6;
+}
+
+#warmupButton:hover {
+    background: #3882f6;
 }
 
 .scoreboard {
@@ -159,7 +169,7 @@ button {
     max-width: 800px;
 }
 
-.qoute-auth {
+.quote-auth {
     color: #1f2937;
     font-size: 16px;
     font-weight: bold;
