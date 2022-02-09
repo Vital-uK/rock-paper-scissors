@@ -134,8 +134,8 @@ function game(rounds = 5) {
             }
         }
         return (playerScore === computerScore) ? "Final result is Draw!" :
-            (playerScore > computerScore) ? "You win the Game!" :
-                "You lose the Game!";
+            (playerScore > computerScore) ? "You've won The Game!" :
+                "You've lost The Game!";
 
     } else console.log("Parameter should be positive integer number!");
 }

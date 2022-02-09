@@ -41,6 +41,7 @@ img {
 .header-text {
     font-size: 24px;
     color: #f9faf8;
+    font-style: italic;
 } 
 
 #round-number-text {
