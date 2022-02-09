@@ -1,4 +1,4 @@
-let quotesArr = [];
+const quotesArr = [];
 quotesArr[0] = "The time when there is no one there to feel sorry for you or to cheer for you is when a player is made.";
 quotesArr[1] = "– Tim Duncan";
 quotesArr[2] = "Excellence is not a singular act but a habit. You are what you do repeatedly.";
@@ -20,7 +20,28 @@ quotesArr[17]= "– Usain Bolt";
 
 let playerScore = 0;
 let computerScore = 0;
+let playerCh = "";
+let gameInProgress = false;
+
 console.log(`Let start the game`);
+
+const roundResultCapture = document.querySelector('#round-result');
+const compChoiceImg = document.querySelector('.compChoiceImg');
+const playerChoiceImgs = document.querySelectorAll('.playerChoiceImg');
+for (let playerChoiceImg of playerChoiceImgs) {
+    playerChoiceImg.addEventListener('click', () => {
+        playerChoiceImg.style.filter = "grayscale(0)";
+        console.log(`You choose ${playerChoiceImg.id}`);
+        
+        if (!gameInProgress) {
+            playRound(playerChoiceImg.id, computerPlay());
+            
+        } else {
+            playerCh = playerChoiceImg.id;
+        }
+        setTimeout(() => playerChoiceImg.style.filter = "", 1000);
+    });
+}
 
 function computerPlay() {
     let computerChoice
@@ -28,12 +49,21 @@ function computerPlay() {
     switch (Math.floor(Math.random() * 3)) {
         case 0:
             computerChoice = "Paper";
+            compChoiceImg.setAttribute('src',"img/paper.jpg");
+            compChoiceImg.style.filter = "grayscale(0)";
+            
             break;
         case 1:
             computerChoice = "Rock";
+            compChoiceImg.setAttribute('src',"img/rock.jpg");
+            compChoiceImg.style.filter = "grayscale(0)";
+            
             break;
         case 2:
-            computerChoice = "Scissor";
+            computerChoice = "Scissors";
+            compChoiceImg.setAttribute('src',"img/scissors.jpg");
+            compChoiceImg.style.filter = "grayscale(0)";
+            
             break;
         default:
             console.log("Computer failed to choose");
@@ -52,8 +82,8 @@ function playerPlay() {
         case "ROCK":
             playerChoice = "Rock";
             break;
-        case "SCISSOR":
-            playerChoice = "Scissor";
+        case "SCISSORS":
+            playerChoice = "Scissors";
             break;
         default:
             console.log("You failed to choose");
@@ -67,38 +97,52 @@ function playerPlay() {
 function playRound(playerSelection, computerSelection) {
     if (playerSelection === computerSelection) {
         console.log("Draw!");
+        roundResultCapture.textContent = "Draw!";
+        roundResultCapture.style.color = "chocolate";
         return "Draw"
     } else {
         switch (playerSelection) {
             case "Paper":
                 if (computerSelection === "Rock") {
                     console.log("You win! Paper beats Rock.");
+                    roundResultCapture.textContent = "You win! Paper beats Rock.";
+                    roundResultCapture.style.color = "green";
                     /*playerScore++;*/
                     return "PlayerWin";
                 } else {
-                    console.log("You lose! Scissor beats Paper.");
+                    console.log("You lose! Scissors beats Paper.");
+                    roundResultCapture.textContent = "You lose! Scissors beats Paper.";
+                    roundResultCapture.style.color = "red";
                     /*computerScore++;*/
                     return "ComputerWin";
                 }
                 break;
             case "Rock":
-                if (computerSelection === "Scissor") {
-                    console.log("You win! Rock beats Scissor");
+                if (computerSelection === "Scissors") {
+                    console.log("You win! Rock beats Scissors");
+                    roundResultCapture.textContent = "You win! Rock beats Scissors";
+                    roundResultCapture.style.color = "green";
                     /*playerScore++;*/
                     return "PlayerWin";
                 } else {
                     console.log("You lose! Paper beats Rock.");
+                    roundResultCapture.textContent = "You lose! Paper beats Rock."
+                    roundResultCapture.style.color = "red";
                     /*computerScore++;*/
                     return "ComputerWin";
                 }
                 break;
-            case "Scissor":
+            case "Scissors":
                 if (computerSelection === "Paper") {
-                    console.log("You win! Scissor beats Paper");
+                    console.log("You win! Scissors beats Paper");
+                    roundResultCapture.textContent = "You win! Scissors beats Paper";
+                    roundResultCapture.style.color = "green";
                     /*playerScore++;*/
                     return "PlayerWin";
                 } else {
                     console.log("You lose! Rock beats Paper.");
+                    roundResultCapture.textContent = "You lose! Rock beats Paper.";
+                    roundResultCapture.style.color = "red";
                     /*computerScore++;*/
                     return "ComputerWin";
                 }
@@ -111,13 +155,14 @@ function playRound(playerSelection, computerSelection) {
     }
 }
 
-function game(rounds = 5) {
+async function game(rounds = 5) {
     if (rounds > 0) {
         let i = 0;
         playerScore = 0;
         computerScore = 0;
-
+        
         while (i < rounds) {
+
             switch (playRound(playerPlay(), computerPlay())) {
                 case "Draw":
                     break;
