@@ -35,8 +35,8 @@ const quoteTextCaption = document.querySelector('.quote-text');
 const quoteAuthCaption = document.querySelector('.quote-auth');
 
 let quotNum = Math.floor(Math.random()*9);
-quoteTextCaption.textContent = quotesArr[quotNum];
-quoteAuthCaption.textContent = quotesArr[quotNum+1];
+quoteTextCaption.textContent = quotesArr[quotNum*2];
+quoteAuthCaption.textContent = quotesArr[quotNum*2+1];
 
 const startBtn = document.querySelector('#startButton');
 
@@ -214,8 +214,8 @@ async function game(rounds = 5) {
             await btnClick(...playerChoiceImgs);
             if (!gameInProgress) return;
             quotNum = Math.floor(Math.random()*9);
-            quoteTextCaption.textContent = quotesArr[quotNum];
-            quoteAuthCaption.textContent = quotesArr[quotNum+1];
+            quoteTextCaption.textContent = quotesArr[quotNum*2];
+            quoteAuthCaption.textContent = quotesArr[quotNum*2+1];
 
             switch (playRound(playerCh, computerPlay())) {
                 case "Draw":
