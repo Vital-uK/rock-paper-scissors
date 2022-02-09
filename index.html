@@ -6,8 +6,57 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Rock Paper Scissor</title>
     <script src="script.js"></script>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    
+    <div class="header">
+        <div class="width-container">
+            <p class="logo">Rock Paper Scissors</p>
+            
+            <p class="header-text">No luck, just skill!</p>
+        </div>
+        
+    </div>
+    <div class="game-container">
+        <div id="round-number-text">Round 1</div>
+        <div class="width-container">
+            <div class="scoreboard">
+                <p class="score-capture">Your score</p>
+                <p class="score-number" id="your-score">0</p>
+            </div>
+            <div class="game">
+                <p class="comp-choice-capture">Computer choice</p>
+                <img src="img/q.jpg" alt="" width="150px">
+                <div id="rond-result">You win!</div>
+                <div id="your-choice">
+                    <img src="./img/rock.jpg" alt="rock image" width="150px">
+                    <img src="./img/paper.jpg" alt="paper image" width="150px">
+                    <img src="img/scissors.jpg" alt="scissors image" width="150px">
+                </div>
+            </div>
+            <div class="scoreboard">
+                <p class="score-capture">Computer score</p>
+                <p class="score-number" id="comp-score">0</p>
+            </div>
+        </div>
+        <div class="buttons-container">
+            <input type="radio" name="gamerounds" value="5" id="5rounds" checked>
+            <label for="5rounds">5 rounds game</label>
+            <input type="radio" name="gamerounds" value="11" id="11rounds" style="margin-left: 30px;">
+            <label for="11rounds">11 rounds game</label>
+            <button type="submit">Start game</button>
+        </div>
+    </div>
+    <div class="quote-box">
+        <div class="qoute-container">
+            <div class="quote-text">“Worrying gets you nowhere. if you turn up worrying about how you’re going to perform, you’ve already lost. Train hard, turn up, run your best and the rest will take care of itself.”</div>
+            <div class="qoute-auth">– Usain Bolt</div>
+          </div>
+    </div>
+    <div class="footer">
+        <div class="width-container">
+            <p class="header-text">Play like a pro!</p>
+        </div>
+    </div>
 </body>
 </html>

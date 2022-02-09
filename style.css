@@ -1,0 +1,157 @@
+body {
+    display: flex;
+    flex-direction: column;
+    
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    min-height: 100vh;
+    min-width:1080px;
+    
+}
+
+.width-container {
+    display: flex;
+    justify-content: center;
+    width: 1080px;
+    margin-left:auto;
+    margin-right:auto;
+    padding: 0 16px;
+    
+}
+
+.header .width-container {
+    justify-content: space-between;
+    
+}
+
+img {
+    width: 125px;
+    border-radius: 10px;
+    border: 2px solid #3882f6;
+    margin: 16px 32px;
+}
+
+
+
+.logo {
+    font-size: 24px;
+    font-weight: 900;
+    color: #f9faf8;
+}
+
+.header-text {
+    font-size: 24px;
+    color: #f9faf8;
+} 
+
+#round-number-text {
+    background: #e5e7eb;
+    font-size: 32px;
+    font-weight: 900;
+    color: #1f2937;
+    text-align: center;
+    padding: 16px;
+    height: 40px;
+}
+
+.score-capture {
+    font-size: 24px;
+    font-weight: 900;
+    text-align: center;
+}
+
+.score-number {
+    font-size: 120px;
+    font-weight: 900;
+    text-align: center;
+}
+
+.header {
+    background: #1f2937;
+    color: #f9faf8; 
+}
+
+.game-container {
+    flex: 1;
+}
+
+.game {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    min-width: 680;
+}
+
+#rond-result {
+    min-width: 680px;
+    font-size: 32px;
+    font-weight: 900;
+    height: 48px;
+    text-align: center;
+    padding: 8px;
+}
+
+.buttons-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.comp-choice-capture {
+    
+    font-size: 24px;
+    font-weight: 900;
+    
+}
+
+
+
+button {
+    margin-left: 30px;
+    background: #3882f6;
+    color: #f9faf8;
+    border-radius: 4px;
+    border: 1px solid #3882f6;
+    padding: 6px 18px;
+}
+
+.scoreboard {
+    width: 200px;
+    
+}
+
+.footer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #1f2937;
+    color: #f9faf8;
+}
+
+.quote-box {
+    flex: 1;
+    display: flex;
+    align-items: center;    
+    justify-content: center;
+    background: #e5e7eb;
+    padding: 32px;
+    
+}
+
+
+.quote-text {
+    color: #1f2937;
+    font-size: 16px;
+    font-weight: lighter;
+    font-style: italic;
+    max-width: 800px;
+}
+
+.qoute-auth {
+    color: #1f2937;
+    font-size: 16px;
+    font-weight: bold;
+    text-align: right;
+}
