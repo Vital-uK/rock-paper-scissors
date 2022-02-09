@@ -46,7 +46,8 @@ startBtn.addEventListener('click', () => {
     roundResultCapture.style.color = "black";
     startBtn.style.background = BLUE;
     warmBtm.style.background = "";
-    game(5);        
+    game(5); 
+    startBtn.style.background = "";
 })
 
 const warmBtm = document.querySelector('#warmupButton');
