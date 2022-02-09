@@ -1,4 +1,4 @@
-const quotesArr = [];
+const quotesArr = []; //need to check how to read txt from file on server and rework
 quotesArr[0] = "The time when there is no one there to feel sorry for you or to cheer for you is when a player is made.";
 quotesArr[1] = "– Tim Duncan";
 quotesArr[2] = "Excellence is not a singular act but a habit. You are what you do repeatedly.";
@@ -118,7 +118,7 @@ function computerPlay() {
     return computerChoice;
 }
 
-function playerPlay() {
+/*function playerPlay() {
     let playerChoice = prompt("Make a choice", "Rock").toUpperCase();
     switch (playerChoice) {
         case "PAPER":
@@ -137,7 +137,7 @@ function playerPlay() {
 
     if (playerChoice != undefined) console.log(`You choose ${playerChoice}`);
     return playerChoice;
-}
+}*/
 
 function playRound(playerSelection, computerSelection) {
     if (playerSelection === computerSelection) {
